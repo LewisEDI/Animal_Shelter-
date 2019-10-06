@@ -2,7 +2,7 @@ require_relative( '../db/sql_runner' )
 
 class Animal
 
-  attr_accessor :name, :species, :breed, :received_date, :adoptable, :photo :owner_id
+  attr_accessor :name, :species, :breed, :received_date, :adoptable, :photo, :owner_id
   attr_reader :id
 
   #not sure if owner_id should be initalized when instance is created
@@ -35,7 +35,7 @@ class Animal
       $1, $2, $3, $4, $5, $6, $7
     )
     RETURNING id"
-    values = [@name, @species, @breed, @received_date, @adoptable, @photo @owner_id]
+    values = [@name, @species, @breed, @received_date, @adoptable, @photo, @owner_id]
     results = SqlRunner.run(sql, values)
     @id = results.first()['id'].to_i
 
@@ -51,6 +51,7 @@ class Animal
   def adoptable()
     status = @animal.adoptable
     return status
+  end 
 
 
   def adoption_status()
