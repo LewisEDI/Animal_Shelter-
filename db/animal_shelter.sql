@@ -17,7 +17,8 @@ CREATE TABLE animals (
   breed VARCHAR(255),
   age INT4,
   recieved_date VARCHAR(255),
-  adoptable BOOLEAN,
+  adoptable VARCHAR(255),
+  photo, VARCHAR(255),
   owner_id INT8 REFERENCES owners(id)
 
 );

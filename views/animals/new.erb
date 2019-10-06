@@ -1,0 +1,45 @@
+<h2>Add a new animal</h2>
+<form method="post" action="/animals">
+  <label for="name">Name:</label>
+  <input
+  type="text"
+  name="name"
+  id="name"
+  />
+
+  <label for="species">Species:</label>
+  <input
+  type="text"
+  name="species"
+  id="species"
+  />
+
+  <label for="breed">Breed:</label>
+  <input
+  type="text"
+  name="breed"
+  id="breed"
+  />
+
+  <label for="received_date">Recieved_date:</label>
+  <input
+  type="text"
+  name="received_date"
+  id="received_date"
+  />
+
+  <label for="adoptable">Adoptable?:</label>
+  <select name="adoptable" id="adoptable">
+    <option value= true >Yes</option>
+    <option value= false>No</option>
+  </select>
+
+  <label for="photo">Photo address:</label>
+  <input
+  type="text"
+  name="photo"
+  id="photo"
+  />
+
+  <input type="submit" value="Add Animal">
+</form>

@@ -2,16 +2,19 @@ require_relative( '../db/sql_runner' )
 
 class Animal
 
-  attr_accessor :name, :species, :breed, :recieved_date, :adoptable, :owner_id
+  attr_accessor :name, :species, :breed, :received_date, :adoptable, :photo :owner_id
   attr_reader :id
+
+  #not sure if owner_id should be initalized when instance is created
 
   def initialize( options )
     @id = options['id'].to_i if options['id']
     @name = options['name']
     @species = options['species']
     @breed = options['breed']
-    @recieved_date = options['recieved_date']
+    @received_date = options['recieved_date']
     @adoptable = options['adoptable']
+    @photo = options['photo']
     @owner_id = options['owner_id'].to_i
 
   end
@@ -22,16 +25,17 @@ class Animal
       name,
       species,
       breed,
-      recieved_date,
+      received_date,
       adoptable,
+      photo,
       owner_id
     )
     VALUES
     (
-      $1, $2, $3, $4, $5, $6
+      $1, $2, $3, $4, $5, $6, $7
     )
     RETURNING id"
-    values = [@name, @species, @breed, @recieved_date, @adoptable, @owner_id]
+    values = [@name, @species, @breed, @received_date, @adoptable, @photo @owner_id]
     results = SqlRunner.run(sql, values)
     @id = results.first()['id'].to_i
 
@@ -44,11 +48,12 @@ class Animal
     SqlRunner.run( sql, values )
   end
 
-  def adoptable
+  def adoptable()
     status = @animal.adoptable
     return status
 
-  def adoption_status
+
+  def adoption_status()
       status = @animal.owner_id?
       return status
     end
@@ -65,16 +70,16 @@ class Animal
       name,
       species,
       breed,
-      age,
-      recieved_date,
+      received_date,
       adoptable,
+      photo,
       owner_id
       ) =
       (
         $1, $2, $3, $4, $5, $6, $7
       )
       WHERE id = $8"
-      values = [@name, @species, @breed, @age, @recieved_date, @adoptable, @owner_id, @id]
+      values = [@name, @species, @breed, @age, @received_date, @adoptable, @photo, @owner_id, @id]
       SqlRunner.run(sql, values)
     end
 
@@ -113,7 +118,7 @@ class Animal
     return animal
   end
 
-  def self.show_all_for_loop()
+  def self.all()
     sql = "SELECT * FROM animals"
     animals = SqlRunner.run( sql )
     animals_hash = []

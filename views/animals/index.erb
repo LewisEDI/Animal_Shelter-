@@ -1,0 +1,12 @@
+<h2>Animal List</h2>
+
+<div id="animal-wrapper">
+  <% @animal.each do |animal| %>
+
+  <div class="animal">
+    <h3><a href="/animal/<%= animal.id %>"><%= animal.name%></a></h3>
+    <p><%= animal.photo %></p>
+  </div>
+
+  <% end %>
+</div>

@@ -14,7 +14,7 @@ class Owner
 
   end
 
-  def first_name_last_name()
+  def joined_name()
     return "#{@first_name} #{@last_name}"
   end
 
@@ -67,7 +67,7 @@ class Owner
       animals = SqlRunner.run(sql ,values)
       animals_hash = []
       for animal in animals
-        animals_has.push(Animal.new(animal))
+        animals_hash.push(Animal.new(animal))
       end
       return owner_hash.length
     end
@@ -79,7 +79,7 @@ class Owner
       animals = SqlRunner.run(sql ,values)
       animals_hash = []
       for animal in animals
-        animals_has.push(Animal.new(animal))
+        animals_hash.push(Animal.new(animal))
       end
       return owner_hash
     end
@@ -110,7 +110,7 @@ class Owner
       return owner_hash
     end
 
-    def self.show_all_for_loop()
+    def self.all())
       sql = "SELECT * FROM owners"
       owners = SqlRunner.run( sql )
       owners_hash = []
