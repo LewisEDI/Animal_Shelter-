@@ -9,7 +9,7 @@ class Owner
     @id = options['id'].to_i if options['id']
     @first_name = options['first_name']
     @last_name = options['last_name']
-    @phone_number = options['phone_number']
+    @phone_number = options['phone_number'].to_i
     @address = options['address']
 
   end
@@ -60,16 +60,28 @@ class Owner
       SqlRunner.run(sql, values)
     end
 
-    def number_of_animals(owner_id)
+    def number_of_animals(id)
       sql = "SELECT * FROM animals
-      WHERE owner_id = $1"
-      values = [owner_id]
+      WHERE animal.owner_id = $1"
+      values = [id]
       animals = SqlRunner.run(sql ,values)
       animals_hash = []
       for animal in animals
         animals_has.push(Animal.new(animal))
       end
       return owner_hash.length
+    end
+
+    def owners_animals(id)
+      sql = "SELECT * FROM animals
+      WHERE animal.owner_id = $1"
+      values = [id]
+      animals = SqlRunner.run(sql ,values)
+      animals_hash = []
+      for animal in animals
+        animals_has.push(Animal.new(animal))
+      end
+      return owner_hash
     end
 
     def self.delete()

@@ -29,7 +29,7 @@ owner2.save
 owner3.save
 
 
-anima1 = Animal.new({
+animal1 = Animal.new({
   'name' => 'Bouncer',
   'species' => 'Dog',
   'breed' => 'labrador',

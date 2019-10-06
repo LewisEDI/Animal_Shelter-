@@ -12,8 +12,7 @@ class Animal
     @breed = options['breed']
     @recieved_date = options['recieved_date']
     @adoptable = options['adoptable']
-    @owner_id = options['owner_id']
-
+    @owner_id = options['owner_id'].to_i
 
   end
 
@@ -44,6 +43,15 @@ class Animal
     values = [@id]
     SqlRunner.run( sql, values )
   end
+
+  def adoptable
+    status = @animal.adoptable
+    return status
+
+  def adoption_status
+      status = @animal.owner_id?
+      return status
+    end
 
   def owner()
     owner = Owner.find_by_owner_id(@owner_id)
