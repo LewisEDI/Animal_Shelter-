@@ -47,15 +47,9 @@ class Animal
     SqlRunner.run( sql, values )
   end
 
-  def adoptable()
-    status = @animal.adoptable
-    return status
-  end
-
-
   def adoption_status()
-      status = @animal.owner_id?
-      return status
+      return "not adoptable" if owner_id != nil
+      return "adoptable" if owner_id == nil
     end
 
   def owner()
