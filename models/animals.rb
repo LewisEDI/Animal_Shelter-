@@ -48,8 +48,9 @@ class Animal
   end
 
   def adoption_status()
-      return "not adoptable" if owner_id != nil
-      return "adoptable" if owner_id == nil
+    return "not ready for adoption" if adoptable == false
+    return "ready for adoption" if adoptable == true & owner_id == nil
+    return "adopted" if owner_id != nil
     end
 
   def owner()
