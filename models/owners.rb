@@ -74,14 +74,14 @@ class Owner
 
     def owners_animals(id)
       sql = "SELECT * FROM animals
-      WHERE animal.owner_id = $1"
+      WHERE owner_id = $1"
       values = [id]
       animals = SqlRunner.run(sql ,values)
       animals_hash = []
       for animal in animals
         animals_hash.push(Animal.new(animal))
       end
-      return owner_hash
+      return animals_hash
     end
 
     def self.delete()
