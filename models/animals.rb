@@ -5,17 +5,16 @@ class Animal
   attr_accessor :name, :species, :breed, :received_date, :adoptable, :photo, :owner_id
   attr_reader :id
 
-  #not sure if owner_id should be initalized when instance is created
 
   def initialize( options )
     @id = options['id'].to_i if options['id']
     @name = options['name']
     @species = options['species']
     @breed = options['breed']
-    @received_date = options['recieved_date']
+    @received_date = options['received_date']
     @adoptable = options['adoptable']
     @photo = options['photo']
-    @owner_id = options['owner_id'].to_i
+    @owner_id = options['owner_id'].to_i if options["owner_id"]
 
   end
 
@@ -51,7 +50,7 @@ class Animal
   def adoptable()
     status = @animal.adoptable
     return status
-  end 
+  end
 
 
   def adoption_status()

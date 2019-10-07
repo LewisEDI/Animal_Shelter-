@@ -3,7 +3,7 @@ require_relative( '../db/sql_runner' )
 class Owner
 
   attr_accessor :first_name, :last_name, :phone_number, :address
-  attr_reader: :id
+  attr_reader :id
 
   def initialize( options )
     @id = options['id'].to_i if options['id']
@@ -110,12 +110,12 @@ class Owner
       return owner_hash
     end
 
-    def self.all())
+    def self.all()
       sql = "SELECT * FROM owners"
       owners = SqlRunner.run( sql )
       owners_hash = []
       for owner in owners
-        owners_hash.push(Owner.new(owner)
+        owners_hash.push(Owner.new(owner))
       end
       return owners_hash
 
