@@ -53,7 +53,7 @@ class TestOwners < MiniTest::Test
       'received_date' => '09/09/19',
       'adoptable' => true,
       'photo' => 'link to be added',
-      'owner_id' => @owner2.id
+      'owner_id' => @owner1.id
     })
 
     animal3 = Animal.new({
@@ -73,15 +73,10 @@ class TestOwners < MiniTest::Test
 
   end
 
-  # def test_owners_animals()
-  #   result = @owner1.owners_animals(16).count()
-  #   assert_equal(1, result)
-  # end
-
   def test_owners_animals()
     result = @owner1.owners_animals(@owner1.id).count
+    assert_equal(2, result)
     puts result
-    assert_equal(1, result)
   end
 
 
