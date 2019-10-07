@@ -1,6 +1,7 @@
 require("minitest/autorun")
 require_relative("../owners")
 require_relative("../animals")
+require('pry')
 
 class TestOwners < MiniTest::Test
 
@@ -72,11 +73,16 @@ class TestOwners < MiniTest::Test
 
   end
 
+  # def test_owners_animals()
+  #   result = @owner1.owners_animals(16).count()
+  #   assert_equal(1, result)
+  # end
+
   def test_owners_animals()
-    result = @owner1.owners_animals(16).count()
+    result = @owner1.owners_animals(@owner1.id).count
+    puts result
     assert_equal(1, result)
   end
-
 
 
 end
