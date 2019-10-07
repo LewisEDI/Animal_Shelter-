@@ -1,10 +1,10 @@
 <h2>Edit <%= @animal.name %></h2>
-<form method="POST" action="/animal/<%= @animal.id %>">
+<form method="POST" action="/animals/<%= @animal.id %>">
   <div class="form-wrapper">
 
     <div class="form-el">
       <label for="name">Name:</label>
-      <input type="text" name="name" id="fname" value="<%= @animal.name%>"/>
+      <input type="text" name="name" id="name" value="<%= @animal.name%>"/>
     </div>
 
     <div class="form-el">
@@ -22,23 +22,21 @@
       <input type="text" name="Received_date" id="received_date" value="<%= @animal.received_date%>"/>
     </div>
 
-<label for="pizza-selection">Is animal adoptable:</label>
+<label for="adoptable">Is animal adoptable:</label>
 <select name="adoptable" id="adoptable">
   <option
   value="Yes"
-  <%= "selected" if @animal.adoptable == true %>
+  <%= "selected" if @animal.adoptable == "t" %>
   >Yes</option>
   <option
   value="No"
-  <%= "selected" if @animal.adoptable == false %>
+  <%= "selected" if @animal.adoptable == "f" %>
   >No</option>
 </select>
 
-
-#need to grey out this field below if the animal is not ready for adoption
     <div class="form-el">
       <label for="owner_select">Assign Owner:</label>
-      <select name="owner_id" id="house_select" selected="<%= @animal.owner_id %>">
+      <select name="owner_id" id="owner_select" selected="<%= @animal.owner_id %>">
         <% @owners.each do |owner| %>
           <% if owner.id == @animal.owner_id %>
             <option value=<%= owner.id %> selected><%= owner.joined_name %></option>

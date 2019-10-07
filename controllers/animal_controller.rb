@@ -1,11 +1,11 @@
 require('sinatra')
 require('sinatra/contrib/all')
-require_relative('models/animals')
-also_reload('./models/*')
+require_relative('../models/animals')
+also_reload('../models/*')
 
 get '/animals' do
-  @animals = animals.all
-  erb(:index)
+  @animals = Animal.all
+  erb(:"animals/index")
 end
 
 post '/animals' do
@@ -14,25 +14,25 @@ post '/animals' do
 end
 
 get '/animals/new' do
-  @owners = owners.all
-  erb(:new)
+  @owners = Owner.all
+  erb(:"animals/new")
 end
 
 get '/animals/:id' do
-  @animal = Animal.find_by_animal_id(params['id'])
-  erb(:show)
+  @animal = Animal.find(params['id'])
+  erb(:"animals/show")
 end
 
 get '/animals/:id/edit' do
-  @owners = Owners.all
-  @student = Animals.find_by_animal_id(params['id'])
-  erb(:edit)
+  @owners = Owner.all
+  @animal = Animal.find(params['id'])
+  erb(:"animals/edit")
 end
 
 post '/animals/:id' do
   animal = Animal.new(params)
   animal.update
-  redirect to "/animal/#{params['id']}"
+  redirect to "/animals/#{params['id']}"
   #consider redirecting to a confirmation screen later.
 end
 

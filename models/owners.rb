@@ -2,8 +2,7 @@ require_relative( '../db/sql_runner' )
 
 class Owner
 
-  attr_accessor :first_name, :last_name, :phone_number, :address
-  attr_reader :id
+  attr_reader :id, :first_name, :last_name, :phone_number, :address
 
   def initialize( options )
     @id = options['id'].to_i if options['id']
@@ -62,7 +61,7 @@ class Owner
 
     def number_of_animals(id)
       sql = "SELECT * FROM animals
-      WHERE animal.owner_id = $1"
+      WHERE owner_id = $1"
       values = [id]
       animals = SqlRunner.run(sql ,values)
       animals_hash = []
@@ -89,35 +88,35 @@ class Owner
       SqlRunner.run(sql)
     end
 
-    def self.find_by_owner_id(id)
+    def self.find(id)
       sql = "SELECT * FROM owners
       WHERE id = $1"
       values = [id]
       result = SqlRunner.run(sql ,values).first
-      animal = Owner.new(result)
-      return animal
+      owner = Owner.new(result)
+      return owner
     end
 
     def self.find_by_owner_name(first_name, last_name)
       sql = "SELECT * FROM owners
       WHERE first_name = $1 AND last_name = $2"
       values = [first_name, last_name]
-      owner_by_name = SqlRunner.run(sql ,values)
-      owner_hash = []
-      for owner in owner_by_name
-        owner_hash.push(Owner.new(owner))
+      result = SqlRunner.run(sql ,values)
+      owners = []
+      for owner in result
+        owners.push(Owner.new(owner))
       end
-      return owner_hash
+      return owners
     end
 
     def self.all()
       sql = "SELECT * FROM owners"
-      owners = SqlRunner.run( sql )
-      owners_hash = []
-      for owner in owners
-        owners_hash.push(Owner.new(owner))
+      result = SqlRunner.run( sql )
+      owners = []
+      for owner in result
+        owners.push(Owner.new(owner))
       end
-      return owners_hash
+      return owners
 
     end
 

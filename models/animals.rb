@@ -2,8 +2,8 @@ require_relative( '../db/sql_runner' )
 
 class Animal
 
-  attr_accessor :name, :species, :breed, :received_date, :adoptable, :photo, :owner_id
-  attr_reader :id
+  attr_reader :id, :name, :species, :breed, :received_date, :adoptable, :photo, :owner_id
+
 
 
   def initialize( options )
@@ -47,11 +47,11 @@ class Animal
     SqlRunner.run( sql, values )
   end
 
-  def adoption_status()
-    return "not ready for adoption" if adoptable == false
-    return "ready for adoption" if adoptable == true & owner_id == nil
-    return "adopted" if owner_id != nil
-    end
+  # def adoption_status()
+  #   return "not ready for adoption" if adoptable == false
+  #   return "ready for adoption" if adoptable == true & owner_id == nil
+  #   return "adopted" if owner_id != nil
+  #   end
 
   def owner()
     owner = Owner.find_by_owner_id(@owner_id)
@@ -74,7 +74,7 @@ class Animal
         $1, $2, $3, $4, $5, $6, $7
       )
       WHERE id = $8"
-      values = [@name, @species, @breed, @age, @received_date, @adoptable, @photo, @owner_id, @id]
+      values = [@name, @species, @breed, @received_date, @adoptable, @photo, @owner_id, @id]
       SqlRunner.run(sql, values)
     end
 
@@ -83,45 +83,56 @@ class Animal
       SqlRunner.run(sql)
     end
 
-  def self.find_by_animal_id(id)
-    sql = "SELECT * FROM animals
-    WHERE id = $1"
-    values = [id]
-    result = SqlRunner.run(sql ,values).first
-    animal = Animal.new(result)
-    return animal
-  end
-
-  def self.find_by_owner_id(id)
-    sql = "SELECT * FROM animals
-    WHERE owner_id = $1"
-    values = [owner_id]
-    animals = SqlRunner.run(sql ,values)
-    animals_hash = []
-    for animal in animals
-      animals_hash.push(Animal.new(animal))
+    def self.find(id)
+      sql = "SELECT * FROM animals
+      WHERE id = $1"
+      values = [id]
+      result = SqlRunner.run(sql, values).first
+      animal = Animal.new(result)
+      return animal
     end
-    return animals_hash
-  end
 
-  def self.find_by_species(id)
-    sql = "SELECT * FROM animals
-    WHERE species = $1"
-    values = [species]
-    result = SqlRunner.run(sql ,values).first
-    animal = Animal.new(result)
-    return animal
-  end
-
-  def self.all()
-    sql = "SELECT * FROM animals"
-    animals = SqlRunner.run( sql )
-    animals_hash = []
-    for animal in animals
-      animals_hash.push(Animal.new(animal))
+    def self.find_by_owner_id(owner_id)
+      sql = "SELECT * FROM animals
+      WHERE owner_id = $1"
+      values = [owner_id]
+      animal_hashes = SqlRunner.run(sql, values)
+      animals = []
+      for animal in animals
+        animals.push(Animal.new(animal))
+      end
+      return animals
     end
-    return animals_hash
 
-  end
+    def self.find_by_species(species)
+      sql = "SELECT * FROM animals
+      WHERE species = $1"
+      values = [species]
+      result = SqlRunner.run(sql, values).first
+      animal = Animal.new(result)
+      return animal
+    end
 
-  end
+    def self.all()
+      sql = "SELECT * FROM animals"
+      result = SqlRunner.run( sql )
+      animals = []
+      for animal in result
+        animals.push(Animal.new(animal))
+      end
+      return animals
+
+    end
+
+#   def self.all()
+#   sql = "SELECT * FROM animals"
+#   animal_data = SqlRunner.run(sql)
+#   animals = map_items(animal_data)
+#   return animals
+# end
+#
+# def self.map_items(animal_data)
+#   return animal_data.map { |animal| Animal.new(animal) }
+# end
+
+end

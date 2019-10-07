@@ -1,10 +1,10 @@
 <h2>Animal List</h2>
 
 <div id="animal-wrapper">
-  <% @animal.each do |animal| %>
+  <% for animal in @animals%>
 
   <div class="animal">
-    <h3><a href="/animal/<%= animal.id %>"><%= animal.name%></a></h3>
+    <h3><a href="/animals/<%= animal.id %>"><%= animal.name%></a></h3>
     <p><%= animal.photo %></p>
   </div>
 
