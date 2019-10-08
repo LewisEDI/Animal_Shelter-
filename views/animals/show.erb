@@ -1,5 +1,5 @@
 <h2><%= @animal.name %></h2>
-
+<br>
 <p><%= @animal.photo %></p>
 <p>Species: <%= @animal.species%></p>
 <p>Breed: <%= @animal.breed %></p>
@@ -13,9 +13,9 @@ owners_name = Owner.find_name(owners_id) %>
 <% end %>
 <br>
 <br>
-<a href="/animals/<%= @animal.id %>/edit">Edit Animals Details</a>
+<form action="/animals/<%= @animal.id %>/edit" method="LINK"><input type="submit" value="Edit <%= @animal.name %>'s Details"></form>
 <br>
-<form action="/animals/<%= @animal.id %>/delete" method="POST"><input type="submit" value="Remove Animal From System"></form>
+<form action="/animals/<%= @animal.id %>/delete" method="POST"><input type="submit" value="Remove <%=@animal.name%> From The System"></form>
 <br>
 
 <% if @animal.adoption_status == 'Ready for adoption' %>
@@ -35,7 +35,7 @@ owners_name = Owner.find_name(owners_id) %>
     </div>
 
     <div class="form-el">
-      <input type="submit" value="Assign Owner"/>
+      <input type="submit" value="Confirm"/>
     </div>
 
   </div>
@@ -44,6 +44,6 @@ owners_name = Owner.find_name(owners_id) %>
 
 <% if @animal.adoption_status == 'Adopted' %>
 <form method="POST" action="/animals/<%= @animal.id %>/unassign">
-<input type="submit" value="Unassign"/>
+<input type="submit" value="Return <%=@animal.name%> To The Shelter "/>
 </form>
 <% end %>
