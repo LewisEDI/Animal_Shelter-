@@ -1,0 +1,15 @@
+<h2>Owners List</h2>
+<form action="/owners/new" method="LINK"><input type="submit" value="Add New Owner"></form>
+<br>
+<br>
+<div id="owner-wrapper">
+  <% for owner in @owners%>
+
+  <div class="owner">
+    <h3><a href="/owners/<%= owner.id %>"><%= owner.joined_name%></a></h3>
+  </div>
+
+
+
+  <% end %>
+</div>

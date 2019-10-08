@@ -71,7 +71,7 @@ class Owner
       return owner_hash.length
     end
 
-    def owners_animals(id)
+    def owners_animals()
       sql = "SELECT * FROM animals
       WHERE owner_id = $1"
       values = [id]
