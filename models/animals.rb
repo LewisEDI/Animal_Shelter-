@@ -48,9 +48,9 @@ class Animal
   end
 
   def adoption_status()
-    return "not ready for adoption" if adoptable == "f"
-    return "ready for adoption" if adoptable == "t" && owner_id == nil
-    return "adopted" if owner_id != nil
+    return "Not ready for adoption" if adoptable == "f"
+    return "Ready for adoption" if adoptable == "t" && owner_id == nil
+    return "Adopted" if owner_id != nil
     end
 
   def owner()
@@ -123,16 +123,5 @@ class Animal
       return animals
 
     end
-
-#   def self.all()
-#   sql = "SELECT * FROM animals"
-#   animal_data = SqlRunner.run(sql)
-#   animals = map_items(animal_data)
-#   return animals
-# end
-#
-# def self.map_items(animal_data)
-#   return animal_data.map { |animal| Animal.new(animal) }
-# end
 
 end

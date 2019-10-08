@@ -79,5 +79,12 @@ class TestOwners < MiniTest::Test
     puts result
   end
 
+  def test_name()
+    result = Owner.find_name(1)
+    puts result
+    assert_equal("Steve Irwin", result)
+    puts result
+  end
+
 
 end

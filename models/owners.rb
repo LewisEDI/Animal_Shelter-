@@ -97,6 +97,15 @@ class Owner
       return owner
     end
 
+    def self.find_name(id)
+      sql = "SELECT * FROM owners
+      WHERE id = $1"
+      values = [id]
+      result = SqlRunner.run(sql ,values).first
+      owner = Owner.new(result)
+      return owner.joined_name
+    end
+
     def self.find_by_owner_name(first_name, last_name)
       sql = "SELECT * FROM owners
       WHERE first_name = $1 AND last_name = $2"

@@ -5,16 +5,14 @@
 <p>Breed: <%= @animal.breed %></p>
 <p>Received Date: <%= @animal.received_date %></p>
 <p>Adoption Status: <%= @animal.adoption_status %></p>
-<% if @animal.adoption_status == 'adopted' %>
-   <p>Adopted By: <%= owners_id = @animal.owner_id %></p>
+<% if @animal.adoption_status == 'Adopted' %>
+<p>Adopted By:
+<%  owners_id = @animal.owner_id
+owners_name = Owner.find_name(owners_id) %>
+<%= owners_name %>
 <% end %>
-
-
-
-<!-- <p>Owner: need to have logic here to only show this field if the animal has been adopted and if so display the id as link to the owners details -->
-
-
+<br>
+<br>
 <a href="/animals/<%= @animal.id %>/edit">Edit Animals Details</a>
 <br>
-
-<form action="/animals/<%= @animal.id %>/delete" method="POST"><input type="submit" value="Remove animal from system"></form>
+<form action="/animals/<%= @animal.id %>/delete" method="POST"><input type="submit" value="Remove Animal From System"></form>
