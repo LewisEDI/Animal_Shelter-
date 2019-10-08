@@ -59,9 +59,20 @@ animal3 = Animal.new({
   'owner_id' => nil
 })
 
+animal4 = Animal.new({
+  'name' => 'Fido',
+  'species' => 'Dog',
+  'breed' => 'Alsation',
+  'received_date' => '09/09/19',
+  'adoptable' => true,
+  'photo' => 'link to be added',
+  'owner_id' => nil
+})
+
 animal1.save
 animal2.save
 animal3.save
+animal4.save
 
 binding.pry
 nil

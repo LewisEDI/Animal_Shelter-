@@ -47,11 +47,11 @@ class Animal
     SqlRunner.run( sql, values )
   end
 
-  # def adoption_status()
-  #   return "not ready for adoption" if adoptable == false
-  #   return "ready for adoption" if adoptable == true & owner_id == nil
-  #   return "adopted" if owner_id != nil
-  #   end
+  def adoption_status()
+    return "not ready for adoption" if adoptable == "f"
+    return "ready for adoption" if adoptable == "t" && owner_id == nil
+    return "adopted" if owner_id != nil
+    end
 
   def owner()
     owner = Owner.find_by_owner_id(@owner_id)
