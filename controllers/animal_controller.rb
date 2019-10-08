@@ -48,13 +48,13 @@ end
 post "/animals/:id/adopt" do
   animal = Animal.find(params["id"])
   animal.owner_id = params["owner_id"].to_i
-  animal.update()
+  animal.update_adoption()
   redirect to "/animals/#{params['id']}"
 end
 
 post "/animals/:id/unassign" do
   animal = Animal.find(params["id"])
   animal.owner_id = nil
-  animal.update()
+  animal.update_adoption()
   redirect to "/animals/#{params['id']}"
 end

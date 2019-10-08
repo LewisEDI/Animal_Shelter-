@@ -67,16 +67,31 @@ class Animal
       species,
       breed,
       received_date,
-      adoptable,
-      owner_id
+      adoptable
+
       ) =
       (
-        $1, $2, $3, $4, $5, $6
+        $1, $2, $3, $4, $5
       )
-      WHERE id = $7"
-      values = [@name, @species, @breed, @received_date, @adoptable, @owner_id, @id]
+      WHERE id = $6"
+      values = [@name, @species, @breed, @received_date, @adoptable, @id]
       SqlRunner.run(sql, values)
     end
+
+    def update_adoption()
+      sql = "UPDATE animals
+      SET
+      (
+        owner_id,
+        name
+        ) =
+        (
+          $1, $2
+        )
+        WHERE id = $3"
+        values = [@owner_id, @name, @id]
+        SqlRunner.run(sql, values)
+      end
 
     def self.delete_all()
       sql = "DELETE FROM animals"
