@@ -83,8 +83,8 @@ class Owner
       return animals_hash
     end
 
-    def self.delete()
-      sql = "DELETE * FROM owners"
+    def self.delete_all()
+      sql = "DELETE FROM owners"
       SqlRunner.run(sql)
     end
 

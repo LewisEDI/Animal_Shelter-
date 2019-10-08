@@ -2,6 +2,9 @@ require_relative('../models/animals')
 require_relative('../models/owners')
 require('pry')
 
+Animal.delete_all
+Owner.delete_all
+
 owner1 = Owner.new({
   'first_name' => 'Steve',
   'last_name' => 'Irwin',
