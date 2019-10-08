@@ -68,14 +68,13 @@ class Animal
       breed,
       received_date,
       adoptable,
-      photo,
       owner_id
       ) =
       (
-        $1, $2, $3, $4, $5, $6, $7
+        $1, $2, $3, $4, $5, $6
       )
-      WHERE id = $8"
-      values = [@name, @species, @breed, @received_date, @adoptable, @photo, @owner_id, @id]
+      WHERE id = $7"
+      values = [@name, @species, @breed, @received_date, @adoptable, @owner_id, @id]
       SqlRunner.run(sql, values)
     end
 
