@@ -35,20 +35,6 @@
 </select>
 
     <div class="form-el">
-      <label for="owner_select">Assign Owner:</label>
-      <select name="owner_id" id="owner_select" selected="<%= @animal.owner_id %>">
-        <%# <% @owners.each do |owner| %> %>
-        <% for owner in @owners %>
-          <% if owner.id == @animal.owner_id %>
-            <option value=<%= owner.id %> selected><%= owner.joined_name %></option>
-          <% else %>
-            <option value=<%= owner.id %>><%= owner.joined_name%></option>
-          <% end %>
-        <% end %>
-      </select>
-    </div>
-
-    <div class="form-el">
       <input type="submit" value="Update Animal"/>
     </div>
 

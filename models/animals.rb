@@ -2,7 +2,8 @@ require_relative( '../db/sql_runner' )
 
 class Animal
 
-  attr_reader :id, :name, :species, :breed, :received_date, :adoptable, :photo, :owner_id
+  attr_reader :id, :name, :species, :breed, :received_date, :adoptable, :photo
+  attr_accessor :owner_id
 
 
 

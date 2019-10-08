@@ -16,3 +16,34 @@ owners_name = Owner.find_name(owners_id) %>
 <a href="/animals/<%= @animal.id %>/edit">Edit Animals Details</a>
 <br>
 <form action="/animals/<%= @animal.id %>/delete" method="POST"><input type="submit" value="Remove Animal From System"></form>
+<br>
+
+<% if @animal.adoption_status == 'Ready for adoption' %>
+<form method="POST" action="/animals/<%= @animal.id %>/adopt">
+  <div class="form-wrapper">
+    <div class="form-el">
+      <label for="owner_select">Assign owner:</label>
+      <select name="owner_id" id="owner_select" selected="<%= @animal.owner_id %>">
+        <% for owner in @owners %>
+          <% if owner.id == @animal.owner_id %>
+            <option value=<%= owner.id %> selected><%= owner.joined_name %></option>
+          <% else %>
+            <option value=<%= owner.id %>><%= owner.joined_name%></option>
+          <% end %>
+          <% end %>
+      </select>
+    </div>
+
+    <div class="form-el">
+      <input type="submit" value="Assign Owner"/>
+    </div>
+
+  </div>
+</form>
+<% end %>
+
+<% if @animal.adoption_status == 'Adopted' %>
+<form method="POST" action="/animals/<%= @animal.id %>/unassign">
+<input type="submit" value="Unassign"/>
+</form>
+<% end %>
