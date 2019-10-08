@@ -55,6 +55,7 @@ end
 post "/animals/:id/unassign" do
   animal = Animal.find(params["id"])
   animal.owner_id = nil
+  animal.set_adoptable_to_false()
   animal.update_adoption()
   redirect to "/animals/#{params['id']}"
 end

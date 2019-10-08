@@ -49,10 +49,15 @@ class Animal
   end
 
   def adoption_status()
-    return "Not ready for adoption" if adoptable == "f"
-    return "Ready for adoption" if adoptable == "t" && owner_id == nil
-    return "Adopted" if owner_id != nil
-    end
+   return "Not ready for adoption" if adoptable == "f" || nil
+   return "Ready for adoption" if adoptable == "t" && owner_id == nil
+   return "Adopted" if owner_id != nil
+   end
+
+    def set_adoptable_to_false()
+      @adoptable = false
+      end
+
 
   def owner()
     owner = Owner.find_by_owner_id(@owner_id)
@@ -83,13 +88,13 @@ class Animal
       SET
       (
         owner_id,
-        name
+        adoptable
         ) =
         (
           $1, $2
         )
         WHERE id = $3"
-        values = [@owner_id, @name, @id]
+        values = [@owner_id, @adoptable, @id]
         SqlRunner.run(sql, values)
       end
 
