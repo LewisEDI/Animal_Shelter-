@@ -9,7 +9,7 @@
 <p>Adopted By:
 <%  owners_id = @animal.owner_id
 owners_name = Owner.find_name(owners_id) %>
-<%= owners_name %>
+<a href="/owners/<%= @animal.owner_id %>/show"><%= owners_name %></a>
 <% end %>
 <br>
 <br>
