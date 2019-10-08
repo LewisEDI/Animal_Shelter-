@@ -1,10 +1,13 @@
 <h2><%= @owner.joined_name %></h2>
 
-<p>name: <%= @owner.joined_name %></p>
+<p>Name: <%= @owner.joined_name %></p>
 <p>Phone number: <%= @owner.phone_number %></p>
-<p>Address <%= @owner.address %>></p>
+<p>Address: <%= @owner.address %></p>
 <br>
 <h2>Animals</h2>
 <% if @owner.owners_animals != [] %>
-<p><%= @owner.owners_animals.first.name%> </p>
-<%end %>
+<% animals = @owner.owners_animals %>
+  <% for animal in animals %>
+      <p><%= animal.name %></p>
+<%end%>
+<%end%>
