@@ -15,7 +15,7 @@ post '/owners' do
 end
 
 get '/owners/new' do
-  @animals = Animals.all
+  @animals = Animal.all
   erb(:"owners/new")
 end
 
