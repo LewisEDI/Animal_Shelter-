@@ -49,7 +49,7 @@ class Animal
   end
 
   def adoption_status()
-   return "Not ready for adoption" if adoptable == "f" || nil
+   return "Not ready for adoption" if adoptable == "f"
    return "Ready for adoption" if adoptable == "t" && owner_id == nil
    return "Adopted" if owner_id != nil
    end
@@ -57,7 +57,6 @@ class Animal
     def set_adoptable_to_false()
       @adoptable = false
       end
-
 
   def owner()
     owner = Owner.find_by_owner_id(@owner_id)
