@@ -1,6 +1,18 @@
 body {
   background: black url('/images/background.jpg');
   background-size: 100%;
-  color: pink
+  color: pink;
+  font-size: 175%;
+  background-size: cover;
+  font-family: courier;
 
+}
+
+h2 {
+    text-shadow: 5px 3px red;
+}
+
+a {
+
+   color: #42e3f5;
 }

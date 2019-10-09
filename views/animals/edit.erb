@@ -3,22 +3,22 @@
   <div class="form-wrapper">
 
     <div class="form-el">
-      <label for="name">Name:</label>
+      <label for="name"><b>Name:</b></label>
       <input type="text" name="name" id="name" value="<%= @animal.name%>"/>
     </div>
 
     <div class="form-el">
-      <label for="last_name">Species:</label>
+      <label for="last_name"><b>Species:</b></label>
       <input type="text" name="species" id="species" value="<%= @animal.species%>"/>
     </div>
 
     <div class="form-el">
-      <label for="last_name">Breed:</label>
+      <label for="last_name"><b>Breed:</b></label>
       <input type="text" name="breed" id="breed" value="<%= @animal.breed%>"/>
     </div>
 
 <% if @animal.owner_id == nil %>
-<label for="adoptable">Is animal adoptable:</label>
+<label for="adoptable"><b>Is <%= @animal.name%> adoptable?:</b></label>
 <select name="adoptable" id="adoptable">
   <option
   value="Yes"

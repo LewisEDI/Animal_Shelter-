@@ -9,21 +9,21 @@ owner1 = Owner.new({
   'first_name' => 'Steve',
   'last_name' => 'Irwin',
   'phone_number' => 555444777,
-  'address' => '75 south ripper road'
+  'address' => '75 South Ripper road'
 })
 
 owner2 = Owner.new({
   'first_name' => 'Terry',
   'last_name' => 'Nutkins',
   'phone_number' => 555333888,
-  'address' => '23 otter lane'
+  'address' => '23 Otter Lane'
 })
 
 owner3 = Owner.new({
-  'first_name' => 'David',
-  'last_name' => 'Attenborough',
+  'first_name' => 'Michaela',
+  'last_name' => 'Strachan',
   'phone_number' => 555777999,
-  'address' => '19 croaky mill'
+  'address' => '19 Safari Mill'
 })
 
 
@@ -35,7 +35,7 @@ owner3.save
 animal1 = Animal.new({
   'name' => 'Bouncer',
   'species' => 'Dog',
-  'breed' => 'labrador',
+  'breed' => 'Labrador',
   'received_date' => '23/01/18',
   'adoptable' => true,
   'photo' => "/images/bouncer.png",
@@ -43,39 +43,29 @@ animal1 = Animal.new({
 })
 
 animal2 = Animal.new({
-  'name' => 'Maisie',
-  'species' => 'Cat',
-  'breed' => 'Tabby',
+  'name' => 'Snowflake',
+  'species' => 'Dolphin',
+  'breed' => 'Bottlenose',
   'received_date' => '09/09/19',
   'adoptable' => true,
-  'photo' => nil,
-  'owner_id' => owner2.id
-})
-
-animal3 = Animal.new({
-  'name' => 'Jake',
-  'species' => 'Snake',
-  'breed' => 'Python',
-  'received_date' => '20/04/16',
-  'adoptable' => false,
-  'photo' => nil,
+  'photo' => "/images/snowflake.png",
   'owner_id' => nil
 })
 
-animal4 = Animal.new({
-  'name' => 'Fido',
+
+animal3 = Animal.new({
+  'name' => 'Bud',
   'species' => 'Dog',
-  'breed' => 'Alsation',
+  'breed' => 'Golden Retriever',
   'received_date' => '09/09/19',
-  'adoptable' => true,
-  'photo' => nil,
+  'adoptable' => false,
+  'photo' => "/images/bud.png",
   'owner_id' => nil
 })
 
 animal1.save
 animal2.save
 animal3.save
-animal4.save
 
 binding.pry
 nil
