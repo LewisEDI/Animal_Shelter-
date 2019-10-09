@@ -4,6 +4,10 @@
 <p>Phone number: <%= @owner.phone_number %></p>
 <p>Address: <%= @owner.address %></p>
 <br>
+<form action="/owners/<%= @owner.id %>/edit" method="LINK"><input type="submit" value="Edit <%= @owner.joined_name %>'s Details"></form>
+<br>
+<form action="/owners/<%= @owner.id %>/delete" method="POST"><input type="submit" value="Remove <%= @owner.joined_name %> From The System"></form>
+<br>
 <% if @owner.owners_animals != [] %>
 <h2>Animals</h2>
 <% end %>
