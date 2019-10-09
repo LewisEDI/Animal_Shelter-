@@ -59,7 +59,7 @@ class Owner
       SqlRunner.run(sql, values)
     end
 
-    def number_of_animals(id)
+    def number_of_animals()
       sql = "SELECT * FROM animals
       WHERE owner_id = $1"
       values = [id]
@@ -68,7 +68,7 @@ class Owner
       for animal in animals
         animals_hash.push(Animal.new(animal))
       end
-      return owner_hash.length
+      return animals_hash.length
     end
 
     def owners_animals()
