@@ -38,7 +38,7 @@ animal1 = Animal.new({
   'breed' => 'labrador',
   'received_date' => '23/01/18',
   'adoptable' => true,
-  'photo' => 'link to be added',
+  'photo' => "/images/bouncer.png",
   'owner_id' => owner1.id
 })
 
@@ -48,7 +48,7 @@ animal2 = Animal.new({
   'breed' => 'Tabby',
   'received_date' => '09/09/19',
   'adoptable' => true,
-  'photo' => 'link to be added',
+  'photo' => nil,
   'owner_id' => owner2.id
 })
 
@@ -58,7 +58,7 @@ animal3 = Animal.new({
   'breed' => 'Python',
   'received_date' => '20/04/16',
   'adoptable' => false,
-  'photo' => 'link to be added',
+  'photo' => nil,
   'owner_id' => nil
 })
 
@@ -68,7 +68,7 @@ animal4 = Animal.new({
   'breed' => 'Alsation',
   'received_date' => '09/09/19',
   'adoptable' => true,
-  'photo' => 'link to be added',
+  'photo' => nil,
   'owner_id' => nil
 })
 
