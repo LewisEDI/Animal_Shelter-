@@ -4,12 +4,14 @@
 <p>Phone number: <%= @owner.phone_number %></p>
 <p>Address: <%= @owner.address %></p>
 <br>
+<% if @owner.owners_animals != [] %>
 <h2>Animals</h2>
+<% end %>
 <% if @owner.owners_animals != [] %>
 <% animals = @owner.owners_animals %>
   <% for animal in animals %>
 <a href="/animals/<%= animal.id %>"><%= animal.name %></a>
 <br>
 <br>
-<%end%>
-<%end%>
+<% end %>
+<% end %>
