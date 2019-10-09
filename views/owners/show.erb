@@ -8,6 +8,8 @@
 <% if @owner.owners_animals != [] %>
 <% animals = @owner.owners_animals %>
   <% for animal in animals %>
-      <p><%= animal.name %></p>
+<a href="/animals/<%= animal.id %>"><%= animal.name %></a>
+<br>
+<br>
 <%end%>
 <%end%>

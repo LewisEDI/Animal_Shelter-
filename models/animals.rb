@@ -2,7 +2,7 @@ require_relative( '../db/sql_runner' )
 
 class Animal
 
-  attr_reader :id, :name, :species, :breed, :received_date, :adoptable, :photo
+  attr_reader :id, :name, :species, :breed, :adoptable, :photo
   attr_accessor :owner_id
 
 
@@ -12,7 +12,6 @@ class Animal
     @name = options['name']
     @species = options['species']
     @breed = options['breed']
-    @received_date = options['received_date']
     @adoptable = options['adoptable']
     @photo = options['photo']
     @owner_id = options['owner_id'].to_i if options["owner_id"]
@@ -25,17 +24,16 @@ class Animal
       name,
       species,
       breed,
-      received_date,
       adoptable,
       photo,
       owner_id
     )
     VALUES
     (
-      $1, $2, $3, $4, $5, $6, $7
+      $1, $2, $3, $4, $5, $6
     )
     RETURNING id"
-    values = [@name, @species, @breed, @received_date, @adoptable, @photo, @owner_id]
+    values = [@name, @species, @breed, @adoptable, @photo, @owner_id]
     results = SqlRunner.run(sql, values)
     @id = results.first()['id'].to_i
 
@@ -70,15 +68,14 @@ class Animal
       name,
       species,
       breed,
-      received_date,
       adoptable
 
       ) =
       (
-        $1, $2, $3, $4, $5
+        $1, $2, $3, $4
       )
-      WHERE id = $6"
-      values = [@name, @species, @breed, @received_date, @adoptable, @id]
+      WHERE id = $5"
+      values = [@name, @species, @breed, @adoptable, @id]
       SqlRunner.run(sql, values)
     end
 
